@@ -2,17 +2,37 @@
 
 Console.Write("Введите количество строк массива:");
 
+int maxArray = 0;
 try
 {
-    int maxArray = int.Parse(Console.ReadLine());
+    maxArray = int.Parse(Console.ReadLine());
 }
 catch(Exception)
 {
     Console.WriteLine("Введенные данные не является целым числом.");
 }
 
-static string[] CreateArray(int maxLines = 20)
+string[] programmArray = CreateArray(maxArray);
+PrintArray(programmArray);
+
+static string[] CreateArray(int maxLines)
 {
     string[] array = new string[maxLines];
+    for (int i = 0; i < maxLines; i++)
+    {
+        Console.WriteLine("Введите строку " + (i+1) + ": ");
+        array[i] = Console.ReadLine();
+    }
+    Console.WriteLine("");
     return array;
+}
+
+static void PrintArray(string[] arr)
+{
+    Console.WriteLine("Массив: ");
+    Console.WriteLine("");
+    for (int i = 0; i < arr.Length; i++)
+    {
+        Console.WriteLine(arr[i]);
+    }
 }
