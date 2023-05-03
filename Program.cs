@@ -13,7 +13,9 @@ catch(Exception)
 }
 
 string[] programmArray = CreateArray(maxArray);
-PrintArray(programmArray);
+
+string[] newArray = ChangeArray(programmArray, maxArray);
+PrintArray(newArray);
 
 static string[] CreateArray(int maxLines)
 {
@@ -29,10 +31,25 @@ static string[] CreateArray(int maxLines)
 
 static void PrintArray(string[] arr)
 {
-    Console.WriteLine("Массив: ");
+    Console.WriteLine("Новый массив: ");
     Console.WriteLine("");
     for (int i = 0; i < arr.Length; i++)
     {
         Console.WriteLine(arr[i]);
     }
+}
+
+static string[] ChangeArray(string[] arr, int maxA, int maxWord = 3)
+{
+    string[] cArr = new string[maxA];
+    int cArrIndex = 0;
+    for (int i = 0; i < maxA; i++)
+    {
+        if (arr[i].Length <= 3)
+        {
+            cArr[cArrIndex++] = arr[i];
+        }
+    }
+    Array.Resize(ref cArr, cArrIndex);
+    return cArr;
 }
